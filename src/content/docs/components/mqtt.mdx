@@ -341,6 +341,10 @@ The two sensors then publish to `livingroom/living_room/sensor/temperature/state
 With discovery, each sub-device also appears as its own device in Home Assistant, connected through the main device,
 and the discovery id and unique id of its entities include the sub-device.
 
+Names are compared after lower-casing and replacing spaces and symbols with `_`. With the option on, configuration
+validation fails if two entities would still share a topic or discovery id: for example `Temperature` on the
+`Bedroom` sub-device and `Bedroom Temperature` on the main device, or sub-devices named `Battery A` and `Battery_A`.
+
 > [!NOTE]
 > Turning this on changes the topics, discovery ids and unique ids of entities on sub-devices. Home Assistant
 > creates them as new entities; remove the old ones, and update anything else that uses the old topics.
